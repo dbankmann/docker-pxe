@@ -23,6 +23,7 @@ RUN \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/elflink/ldlinux/ldlinux.c32 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/menu/menu.c32 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/efi64/efi/syslinux.efi /var/lib/tftpboot/bootx64.efi \
+  && cp "$TEMP_SYSLINUX_PATH"/efi64/com32/elflink/ldlinux/ldlinux.e64 /var/lib/tftpboot/ \
   && rm -rf "$TEMP_SYSLINUX_PATH" \
   && rm /tmp/"$SYSLINUX_FILE"
 # Download and extract MemTest86+
