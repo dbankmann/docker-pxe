@@ -8,21 +8,22 @@ RUN apk add --update \
   wget \
   && rm -rf /var/cache/apk/*
 
-ENV SYSLINUX_VERSION 6.03
-ENV TEMP_SYSLINUX_PATH /tmp/syslinux-"$SYSLINUX_VERSION"
+ENV SYSLINUX_VERSION 6.04
+ENV SYSLINUX_VERSION_SUFFIX -pre1
+ENV SYSLINUX_FILE syslinux-"$SYSLINUX_VERSION""$SYSLINUX_VERSION_SUFFIX".tar.gz
+ENV TEMP_SYSLINUX_PATH /tmp/syslinux-"$SYSLINUX_VERSION""$SYSLINUX_VERSION_SUFFIX"
 WORKDIR /tmp
 RUN \
   mkdir -p "$TEMP_SYSLINUX_PATH" \
-  && wget -q https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-"$SYSLINUX_VERSION".tar.gz \
-  && tar -xzf syslinux-"$SYSLINUX_VERSION".tar.gz \
+  && wget -q https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/"$SYSLINUX_VERSION"/"$SYSLINUX_FILE" \
+  && tar -xzf "$SYSLINUX_FILE" \
   && mkdir -p /var/lib/tftpboot \
   && cp "$TEMP_SYSLINUX_PATH"/bios/core/pxelinux.0 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/libutil/libutil.c32 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/elflink/ldlinux/ldlinux.c32 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/menu/menu.c32 /var/lib/tftpboot/ \
   && rm -rf "$TEMP_SYSLINUX_PATH" \
-  && rm /tmp/syslinux-"$SYSLINUX_VERSION".tar.gz
-
+  && rm /tmp/"$SYSLINUX_FILE"
 # Download and extract MemTest86+
 ENV MEMTEST_VERSION 5.01
 RUN wget -q http://www.memtest.org/download/"$MEMTEST_VERSION"/memtest86+-"$MEMTEST_VERSION".bin.gz \
