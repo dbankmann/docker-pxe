@@ -8,12 +8,12 @@ RUN apk add --update \
   wget \
   && rm -rf /var/cache/apk/*
 
-ENV SYSLINUX_VERSION 6.03
+ENV SYSLINUX_VERSION 6.04-pre1
 ENV TEMP_SYSLINUX_PATH /tmp/syslinux-"$SYSLINUX_VERSION"
 WORKDIR /tmp
 RUN \
   mkdir -p "$TEMP_SYSLINUX_PATH" \
-  && wget -q https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-"$SYSLINUX_VERSION".tar.gz \
+  && wget -q https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/syslinux-"$SYSLINUX_VERSION".tar.gz \
   && tar -xzf syslinux-"$SYSLINUX_VERSION".tar.gz \
   && mkdir -p /var/lib/tftpboot \
   && cp "$TEMP_SYSLINUX_PATH"/bios/core/pxelinux.0 /var/lib/tftpboot/ \
