@@ -22,6 +22,7 @@ RUN \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/libutil/libutil.c32 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/elflink/ldlinux/ldlinux.c32 /var/lib/tftpboot/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/menu/menu.c32 /var/lib/tftpboot/ \
+  && cp "$TEMP_SYSLINUX_PATH"/efi64/efi/syslinux.efi /var/lib/tftpboot/bootx64.efi \
   && rm -rf "$TEMP_SYSLINUX_PATH" \
   && rm /tmp/"$SYSLINUX_FILE"
 # Download and extract MemTest86+
