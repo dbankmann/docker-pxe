@@ -1,3 +1,4 @@
+name: '[builder] CI for releases'
 on:
     push:
         branches:
@@ -31,5 +32,3 @@ jobs:
                 --output "type=image,push=true" \
                 --file ./Dockerfile . \
                 --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/ttrss:latest
-
-
