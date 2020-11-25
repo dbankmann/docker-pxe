@@ -3,6 +3,7 @@ on:
     push:
         branches:
             - syslinux604pre
+            - master
 
 jobs:
     release:
@@ -11,6 +12,8 @@ jobs:
         -
             name: Checkout
             uses: actions/checkout@v2
+            with:
+                ref: syslinux604pre
         -
             name: Login to DockerHub
             uses: docker/login-action@v1
