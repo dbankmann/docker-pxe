@@ -30,6 +30,15 @@ jobs:
           name: Available platforms
           run: echo ${{ steps.buildx.outputs.platforms }}
         -
-           name: Build
-           run: |
-             docker build .
+            name: Build and push
+            id: docker_build
+            uses: docker/build-push-action@v2
+            with:
+              push: true
+              tags: dbankmann/pxe:latest
+             # build-args: |
+          #       arg1=value1
+                #arg2=value2
+        -
+            name: Image digest
+            run: echo ${{ steps.docker_build.outputs.digest }}
