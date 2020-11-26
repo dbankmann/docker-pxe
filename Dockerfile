@@ -30,6 +30,7 @@ RUN \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/elflink/ldlinux/ldlinux.c32 /var/lib/tftpboot/bios/ \
   && cp "$TEMP_SYSLINUX_PATH"/bios/com32/menu/menu.c32 /var/lib/tftpboot/bios/ \
   && cp "$TEMP_SYSLINUX_PATH"/efi64/efi/syslinux.efi /var/lib/tftpboot/efi64/bootx64.efi \
+  && cp "$TEMP_SYSLINUX_PATH"/efi64/com32/libutil/libutil.c32 /var/lib/tftpboot/efi64/ \
   && cp "$TEMP_SYSLINUX_PATH"/efi64/com32/elflink/ldlinux/ldlinux.e64 /var/lib/tftpboot/efi64/ \
   && cp "$TEMP_SYSLINUX_PATH"/efi64/com32/menu/menu.c32 /var/lib/tftpboot/efi64/ \
   && rm -rf "$TEMP_SYSLINUX_PATH" \
