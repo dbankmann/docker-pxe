@@ -6,6 +6,7 @@ LABEL maintainer "ferrari.marco@gmail.com"
 RUN apk add --update \
   dnsmasq \
   wget \
+  nfs-utils \ 
   && rm -rf /var/cache/apk/*
 
 ENV SYSLINUX_VERSION 6.04
