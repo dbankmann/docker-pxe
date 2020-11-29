@@ -6,7 +6,6 @@ LABEL maintainer "ferrari.marco@gmail.com"
 RUN apk add --update \
   dnsmasq \
   wget \
-  nfs-utils \ 
   && rm -rf /var/cache/apk/*
 
 ENV SYSLINUX_VERSION 6.04
@@ -48,7 +47,6 @@ COPY tftpboot/ /var/lib/tftpboot
 
 # Configure DNSMASQ
 COPY etc/ /etc
-RUN exportfs -arv
 
 # Start dnsmasq. It picks up default configuration from /etc/dnsmasq.conf and
 # /etc/default/dnsmasq plus any command line switch
