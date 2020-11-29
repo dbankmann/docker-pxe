@@ -48,6 +48,7 @@ COPY tftpboot/ /var/lib/tftpboot
 
 # Configure DNSMASQ
 COPY etc/ /etc
+RUN exportfs -arv
 
 # Start dnsmasq. It picks up default configuration from /etc/dnsmasq.conf and
 # /etc/default/dnsmasq plus any command line switch

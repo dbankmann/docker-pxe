@@ -1,0 +1,1 @@
+/var/lib/tftpboot/images * (ro,no_root_squash,no_subtree_check)
